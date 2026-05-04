@@ -53,10 +53,18 @@ export function AppSimulator({ app, isActive, onHome, onStart, onStop }: Props) 
       </div>
 
       {/* Bottom nav */}
-      <div className="bg-black/90 text-white flex justify-around py-3 shrink-0">
-        <button onClick={onHome} className="text-xs flex flex-col items-center gap-0.5 active:opacity-60">
-          <span className="text-lg">●</span>
+      <div className="bg-black/90 text-white flex justify-around items-center py-3 shrink-0">
+        <button onClick={onHome} className="text-xs flex flex-col items-center gap-0.5 active:opacity-60 px-6">
+          <span className="text-lg">◁</span>
+          <span>Back</span>
+        </button>
+        <button onClick={onHome} className="text-xs flex flex-col items-center gap-0.5 active:opacity-60 px-6">
+          <span className="text-lg">○</span>
           <span>Home</span>
+        </button>
+        <button onClick={onStop} className="text-xs flex flex-col items-center gap-0.5 active:opacity-60 px-6">
+          <span className="text-lg">▭</span>
+          <span>Recent</span>
         </button>
       </div>
     </div>
