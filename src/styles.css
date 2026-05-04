@@ -78,9 +78,12 @@
 @layer base {
   * { border-color: var(--color-border); }
   body {
-    background: var(--gradient-bg);
+    background: var(--phone);
     color: var(--color-foreground);
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
   }
 }
 

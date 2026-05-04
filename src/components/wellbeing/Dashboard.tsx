@@ -1,4 +1,5 @@
 import { AppId, AppState, fmtTime } from "@/lib/wellbeing-store";
+import { AppIcon } from "./AppIcon";
 
 interface Props {
   apps: AppState[];
@@ -65,7 +66,7 @@ function AppRow({ app, active, onClick }: { app: AppState; active: boolean; onCl
       style={{ boxShadow: "0 2px 8px -2px oklch(0 0 0 / 0.08)" }}
     >
       <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${app.color} flex items-center justify-center text-2xl shrink-0`}>
-        {app.icon}
+        <AppIcon appId={app.id} className="w-8 h-8 object-contain" />
       </div>
       <div className="flex-1 min-w-0">
         <div className="flex items-center justify-between gap-2">

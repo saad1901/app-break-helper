@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { AppState, fmtTime } from "@/lib/wellbeing-store";
+import { AppIcon } from "./AppIcon";
 
 interface Props {
   app: AppState;
@@ -41,7 +42,9 @@ export function AppSimulator({ app, isActive, onHome, onStart, onStop }: Props) 
       {/* App "content" */}
       <div className={`flex-1 overflow-hidden bg-gradient-to-br ${app.color} relative`}>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6">
-          <div className="text-7xl mb-4 drop-shadow-lg">{app.icon}</div>
+          <div className="text-7xl mb-4 drop-shadow-lg flex items-center justify-center">
+            <AppIcon appId={app.id} className="w-20 h-20 object-contain" />
+          </div>
           <h2 className="text-3xl font-bold drop-shadow">{app.name}</h2>
           <p className="mt-2 text-white/90 text-sm max-w-xs">
             Simulated app session in progress. The tracker is recording your time.

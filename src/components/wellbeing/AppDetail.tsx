@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AppState, fmtTime } from "@/lib/wellbeing-store";
+import { AppIcon } from "./AppIcon";
 
 interface Props {
   app: AppState;
@@ -28,7 +29,7 @@ export function AppDetail({ app, isActive, onBack, onStart, onStop, onSetLimit }
 
       <div className="flex flex-col items-center text-center mt-2">
         <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${app.color} flex items-center justify-center text-4xl shadow-lg`}>
-          {app.icon}
+          <AppIcon appId={app.id} className="w-12 h-12 object-contain" />
         </div>
         <h1 className="text-2xl font-bold mt-4">{app.name}</h1>
         <p className="text-sm text-muted-foreground">Daily usage</p>

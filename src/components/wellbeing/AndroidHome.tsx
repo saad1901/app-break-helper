@@ -1,4 +1,5 @@
 import { AppState, fmtTime } from "@/lib/wellbeing-store";
+import { AppIcon } from "./AppIcon";
 
 interface Props {
   apps: AppState[];
@@ -27,7 +28,7 @@ export function AndroidHome({ apps, onOpenApp, onOpenTracker, totalUsage }: Prop
       {/* App grid */}
       <div className="flex-1 px-6 pt-8 grid grid-cols-4 gap-x-3 gap-y-6 content-start">
         {apps.map((app) => (
-          <AppIcon key={app.id} app={app} onClick={() => onOpenApp(app.id)} />
+          <AppIconButton key={app.id} app={app} onClick={() => onOpenApp(app.id)} />
         ))}
         <button onClick={onOpenTracker} className="flex flex-col items-center gap-1.5 active:scale-90 transition">
           <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center text-2xl shadow-lg">
@@ -46,7 +47,7 @@ export function AndroidHome({ apps, onOpenApp, onOpenTracker, totalUsage }: Prop
             className="active:scale-90 transition"
           >
             <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${app.color} flex items-center justify-center text-xl shadow-md`}>
-              {app.icon}
+              <AppIcon appId={app.id} className="w-7 h-7 object-contain" />
             </div>
           </button>
         ))}
@@ -60,11 +61,11 @@ export function AndroidHome({ apps, onOpenApp, onOpenTracker, totalUsage }: Prop
   );
 }
 
-function AppIcon({ app, onClick }: { app: AppState; onClick: () => void }) {
+function AppIconButton({ app, onClick }: { app: AppState; onClick: () => void }) {
   return (
     <button onClick={onClick} className="flex flex-col items-center gap-1.5 active:scale-90 transition relative">
       <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${app.color} flex items-center justify-center text-2xl shadow-lg ${app.blocked ? "grayscale opacity-60" : ""}`}>
-        {app.icon}
+        <AppIcon appId={app.id} className="w-8 h-8 object-contain" />
       </div>
       <span className="text-[11px] text-white/90 truncate max-w-full">{app.name}</span>
       {app.blocked && (
