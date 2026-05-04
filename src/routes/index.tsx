@@ -69,26 +69,48 @@ function Index() {
         />
       )}
 
-      {screen.kind === "tracker" && (
-        <Dashboard
-          apps={appsList}
-          totalUsage={totalUsage}
-          totalLimit={totalLimit}
-          activeAppId={state.activeAppId}
-          onSelect={(id) => setScreen({ kind: "tracker-detail", id })}
-          onReset={resetDay}
-        />
-      )}
-
-      {screen.kind === "tracker-detail" && trackerApp && (
-        <AppDetail
-          app={trackerApp}
-          isActive={state.activeAppId === trackerApp.id}
-          onBack={() => setScreen({ kind: "tracker" })}
-          onStart={() => startApp(trackerApp.id)}
-          onStop={stopApp}
-          onSetLimit={(m) => setLimit(trackerApp.id, m)}
-        />
+      {(screen.kind === "tracker" || screen.kind === "tracker-detail") && (
+        <div className="h-full flex flex-col">
+          <div className="flex-1 overflow-hidden">
+            {screen.kind === "tracker" && (
+              <Dashboard
+                apps={appsList}
+                totalUsage={totalUsage}
+                totalLimit={totalLimit}
+                activeAppId={state.activeAppId}
+                onSelect={(id) => setScreen({ kind: "tracker-detail", id })}
+                onReset={resetDay}
+              />
+            )}
+            {screen.kind === "tracker-detail" && trackerApp && (
+              <AppDetail
+                app={trackerApp}
+                isActive={state.activeAppId === trackerApp.id}
+                onBack={() => setScreen({ kind: "tracker" })}
+                onStart={() => startApp(trackerApp.id)}
+                onStop={stopApp}
+                onSetLimit={(m) => setLimit(trackerApp.id, m)}
+              />
+            )}
+          </div>
+          <div className="bg-black/90 text-white flex justify-around items-center py-3 shrink-0">
+            <button
+              onClick={() => screen.kind === "tracker-detail" ? setScreen({ kind: "tracker" }) : goHome()}
+              className="text-xs flex flex-col items-center gap-0.5 active:opacity-60 px-6"
+            >
+              <span className="text-lg">◁</span>
+              <span>Back</span>
+            </button>
+            <button onClick={goHome} className="text-xs flex flex-col items-center gap-0.5 active:opacity-60 px-6">
+              <span className="text-lg">○</span>
+              <span>Home</span>
+            </button>
+            <button onClick={goHome} className="text-xs flex flex-col items-center gap-0.5 active:opacity-60 px-6">
+              <span className="text-lg">▭</span>
+              <span>Recent</span>
+            </button>
+          </div>
+        </div>
       )}
 
       {blockedApp && (
