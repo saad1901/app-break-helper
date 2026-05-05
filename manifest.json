@@ -1,0 +1,28 @@
+{
+  "background_color": "#ffffff",
+  "description": "Android-style simulator that auto-tracks app time, warns at 80%, and blocks over-limit apps with a parent PIN override.",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "AddictControl",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "AddictControl",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/abe74a59-ea76-4c74-a516-41ccf369f5e4/id-preview-c0b0348c--3842230d-fd47-4335-8288-c643cca57062.lovable.app-1777906892509.png",
+      "type": "image/png",
+      "sizes": "1920x1080",
+      "isSquare": false,
+      "isPng": true,
+      "isWebp": false,
+      "isJpg": false,
+      "width": 1920,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    }
+  ],
+  "id": "12"
+}
