@@ -40,20 +40,30 @@ export function AppSimulator({ app, isActive, onHome, onStart, onStop }: Props) 
       </div>
 
       {/* App "content" */}
-      <div className={`flex-1 overflow-hidden bg-gradient-to-br ${app.color} relative`}>
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6">
-          <div className="text-7xl mb-4 drop-shadow-lg flex items-center justify-center">
-            <AppIcon appId={app.id} className="w-20 h-20 object-contain" />
-          </div>
-          <h2 className="text-3xl font-bold drop-shadow">{app.name}</h2>
-          <p className="mt-2 text-white/90 text-sm max-w-xs">
-            Simulated app session in progress. The tracker is recording your time.
-          </p>
-          <div className="mt-6 px-4 py-2 rounded-full bg-black/30 backdrop-blur text-xs font-mono">
-            {fmtTime(app.usage)} / {fmtTime(app.limit)} ({Math.round(pct)}%)
+      {app.id === "instagram" ? (
+        <div className="flex-1 overflow-hidden relative">
+          <img
+            src="/imgs/insta.png"
+            alt="Instagram"
+            className="w-full h-full object-cover object-top"
+          />
+        </div>
+      ) : (
+        <div className={`flex-1 overflow-hidden bg-gradient-to-br ${app.color} relative`}>
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-6">
+            <div className="text-7xl mb-4 drop-shadow-lg flex items-center justify-center">
+              <AppIcon appId={app.id} className="w-20 h-20 object-contain" />
+            </div>
+            <h2 className="text-3xl font-bold drop-shadow">{app.name}</h2>
+            <p className="mt-2 text-white/90 text-sm max-w-xs">
+              Simulated app session in progress. The tracker is recording your time.
+            </p>
+            <div className="mt-6 px-4 py-2 rounded-full bg-black/30 backdrop-blur text-xs font-mono">
+              {fmtTime(app.usage)} / {fmtTime(app.limit)} ({Math.round(pct)}%)
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Bottom nav */}
       <div className="bg-black/90 text-white flex justify-around items-center py-3 shrink-0">
